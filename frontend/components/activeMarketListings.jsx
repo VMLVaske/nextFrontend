@@ -7,7 +7,7 @@ const ActiveMarketListings = () => {
 
     const router = useRouter();
 
-    const marketplace = useMarketplace("0xD3d4036F8BdA104bf7c7c483452267DEAF7640Ff",);
+    const marketplace = useMarketplace("0xD3d4036F8BdA104bf7c7c483452267DEAF7640Ff");
 
     const { data: listings, isLoading, error } = useActiveListings(marketplace);
     console.log("Error: ", error);
@@ -31,7 +31,7 @@ const ActiveMarketListings = () => {
                     </Grid.Container>
                 ) : (
                     <div>
-                        {listings.length == 0 ? (
+                        {listings = 'undefined' ? (
                             <Grid.Container gap={2} justify="center">
                                 <Text>Currently no listings. Check again later. </Text>
                             </Grid.Container>

@@ -49,7 +49,7 @@ const OwnedNFTs = () => {
                                     />
                                 </Card.Body>
                                 <Card.Footer>
-                                    <Row justify="flex-end">
+                                    <Row justify="flex-start">
                                         <Text>{listing.metadata.description}</Text>
                                     </Row>
                                 </Card.Footer>
