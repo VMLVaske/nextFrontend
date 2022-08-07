@@ -1,10 +1,9 @@
 import Layout from '../components/layout'
-import { Container, Spacer, Divider, Button, Text, Modal, Input } from '@nextui-org/react'
+import { Container, Spacer, Divider } from '@nextui-org/react'
 
 import { useAddress } from '@thirdweb-dev/react';
 import { useState } from "react";
 import OwnedNFTs from "../components/ownedNFTs";
-import SingleNFTs from '../components/singleNFTs';
 import CreateNFTModal from '../components/modals/createNFTModal';
 
 export default function User() {
@@ -23,7 +22,6 @@ export default function User() {
                         <Spacer />
                         <Divider />
                         <Spacer />
-                        <SingleNFTs />
                     </Container>
                 </main>
             </div>
