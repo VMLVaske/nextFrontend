@@ -1,11 +1,7 @@
-import { Container, Spacer, Grid, Button, Row, Text, Card, Modal, Input, Checkbox } from '@nextui-org/react'
-
-import useAuthenticate from "../hooks/useAuthenticate"
-import { useAddress, useDisconnect, useMetamask } from '@thirdweb-dev/react';
+import { Button, Text, Modal, Input } from '@nextui-org/react'
 import { useState } from "react";
 
 export default function SellModal(props) {
-
 
     const [visible, setVisible] = useState(false);
     const handler = () => setVisible(true);

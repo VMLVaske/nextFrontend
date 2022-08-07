@@ -7,20 +7,19 @@ import {
 import { useRouter } from "next/router";
 import { Grid, Container, Card, Text, Row, Loading } from "@nextui-org/react";
 
-const OwnedNFTs = () => {
+const SingleNFTs = () => {
 
     const router = useRouter();
 
     const address = useAddress();
 
-    const nftCollectionAddress = "0x7f214B42f8B53008cc1e81A93a9C8307624E4B26";
-    const nftCollection = useNFTCollection(nftCollectionAddress);
+    const contract = useNFTCollection("0x7f214B42f8B53008cc1e81A93a9C8307624E4B26");
 
     const { data: nfts, isLoading, error } = useNFTs(nftCollection, address);
 
     return (
         <Container fluid>
-            <h3>My Collections</h3>
+            <h3>Single NFTs</h3>
             {isLoading ? (
                 <Grid.Container gap={2} justify="center">
                     <Grid>
@@ -37,7 +36,7 @@ const OwnedNFTs = () => {
                                         <Text b>{listing.metadata.name}</Text>
                                     </Link>
                                 </Card.Header>
-                                <Card.Body css={{ p: 0 }} key={listing.metadata.id} onClick={() => router.push(`/${nftCollectionAddress}/${listing.metadata.id}`)} >
+                                <Card.Body css={{ p: 0 }} key={listing.metadata.id} onClick={() => router.push(`/user/${listing.metadata.id}`)} >
                                     <Card.Image
                                         src={listing.metadata.image}
                                         objectFit="cover"
@@ -61,4 +60,4 @@ const OwnedNFTs = () => {
     );
 };
 
-export default OwnedNFTs;
+export default SingleNFTs;

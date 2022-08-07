@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import Layout from '../../components/layout'
+import Layout from '../../components/layout';
 import { Container, Row, Col, Grid, Spacer, Loading, Button, Divider, Text } from '@nextui-org/react'
 
 import { useAddress, useContract, MediaRenderer, useNFT, useCreateDirectListing, useMarketplace } from '@thirdweb-dev/react';
@@ -29,6 +29,7 @@ const NFT = () => {
             <div>
                 <main>
                     <Container fluid>
+                        <h1>This is right</h1>
                         <Spacer />
                         {isLoading ? (
                             <Grid.Container gap={2} justify="center">

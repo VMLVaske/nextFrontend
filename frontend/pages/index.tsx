@@ -91,7 +91,7 @@ const Home: NextPage = () => {
             ) : (
               <>Connect your wallet to access authentication.</>
             )}
-            { !isMitsmatched ? (<div>You're on the right network</div>) : (<Button onClick={() => switchNetwork(ChainId.Mumbai)}>Switch Network</Button>)}
+            { !isMitsmatched ? (<div>You're on the right network</div>) : (<Button onClick={() => switchNetwork(ChainId.Mumbai)}>Switch Network</Button>)}2
           </Container>
         </main>
       </div>
