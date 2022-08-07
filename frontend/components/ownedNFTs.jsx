@@ -17,8 +17,8 @@ const OwnedNFTs = () => {
     const { data: nfts, isLoading, error } = useNFTs(nftCollection, address)
 
     return (
-        <Container fluid>
-            <h3>My NFTs</h3>
+        <Container fluid justify="center">
+            <Text h3 justify="center">My NFTs</Text>
             {isLoading ? (
                 <Grid.Container gap={2} justify="center">
                     <Grid>

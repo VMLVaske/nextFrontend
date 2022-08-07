@@ -36,8 +36,8 @@ export default function Navbar() {
                 </Button>
             </Grid>
             <Grid>
-                <Button onPress={() => router.push("/user")} >
-                    User
+                <Button onPress={() => router.push("/collection")} >
+                    Collection
                 </Button>
             </Grid>
             <Grid>

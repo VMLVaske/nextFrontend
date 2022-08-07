@@ -1,48 +1,11 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
-import { Container, Button } from '@nextui-org/react';
+import { Container, Row, Text, Spacer, Divider, Col } from '@nextui-org/react';
 
 import type { NextPage } from 'next';
 
-import useAuthenticate from "../hooks/useAuthenticate"
-import { useAddress, useDisconnect, useMetamask, useNetworkMismatch, useNetwork, ChainId } from '@thirdweb-dev/react';
-import { useState } from "react";
-
 
 const Home: NextPage = () => {
-
-  const address = useAddress();
-  const disconnect = useDisconnect();
-  const connectWithMetamask = useMetamask();
-  const { login, authenticate, logout } = useAuthenticate();
-  const isMitsmatched = useNetworkMismatch();
-  const [, switchNetwork] = useNetwork();
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [authMessage, setAuthMessage] = useState("N/A");
-
-  const signInWithEthereum = async () => {
-    setAuthMessage("N/A");
-    await connectWithMetamask();
-    await login();
-    setIsLoggedIn(true);
-  }
-
-  const authenticatedRequest = async () => {
-    const res = await authenticate();
-    if (res.ok) {
-      const address = await res.json();
-      setAuthMessage(`Succesfully authenticated to backend with address ${address}`);
-    } else {
-      setAuthMessage(`Failed to authenticate, backend responded with ${res.status} (${res.statusText})`);
-    }
-  }
-
-  const logoutWallet = async () => {
-    await logout();
-    setIsLoggedIn(false);
-    setAuthMessage("N/A");
-  }
 
   return (
     <Layout>
@@ -55,36 +18,24 @@ const Home: NextPage = () => {
 
         <main>
           <Container fluid>
-            <h1>
-              Main Page
-            </h1>
-            <h2>Wallet Connection - Frontend</h2>
-            {address ? (
-              <Button onPress={disconnect}>Disconnect Wallet</Button>
-            ) : (
-              <Button onPress={connectWithMetamask}>Connect Wallet</Button>
-            )}
-            <p>Connected Address: {address || "N/A"}</p>
+            <Row justify="center">
+              <Text h1>
+                Main Page
+              </Text>
+            </Row>
+            <Spacer />
+            <Row justify="center">
+              <Col xs={6}>
+                <Text>
+                  This is the frontend for the 4th weekend exercise from Encode.Club Solidity Bootcamp. 
+                  This page has the functionality to display a NFT Collection, as well as a NFT Marketplace.
+                </Text>
+              </Col>
+            </Row>
+            <Divider />
 
-            <h2>Authentication - Backend</h2>
-
-            {address ? (
-              <>
-                {isLoggedIn ? (
-                  <Button onPress={logoutWallet}>Logout</Button>
-                ) : (
-                  <Button onPress={signInWithEthereum}>Login with Wallet</Button>
-                )}
-
-                <Button onPress={authenticatedRequest}>Authenticate</Button>
-
-                <p>Logged In Address: {isLoggedIn ? address : "N/A"}</p>
-                <p>Authentication: {authMessage}</p>
-              </>
-            ) : (
-              <>Connect your wallet to access authentication.</>
-            )}
-            { !isMitsmatched ? (<div>You're on the right network</div>) : (<Button onPress={() => switchNetwork(ChainId.Mumbai)}>Switch Network</Button>)}2
+            <Row><Text h3>Prerequisites</Text></Row>
+            <Row><Text>User needs to have a collection </Text></Row>
           </Container>
         </main>
       </div>
