@@ -1,8 +1,8 @@
 import { useTheme } from 'next-themes';
 import { Button, StyledButtonIcon } from '@nextui-org/react';
-import { HeartIcon } from '../icons/HeartIcon';
-import { SunIcon } from '../icons/SunIcon';
-import { MoonIcon } from '../icons/MoonIcon';
+import { HeartIcon } from '../../icons/HeartIcon';
+import { SunIcon } from '../../icons/SunIcon';
+import { MoonIcon } from '../../icons/MoonIcon';
 import { useState } from 'react';
 
 export const ThemeChanger = () => {

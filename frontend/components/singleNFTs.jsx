@@ -1,9 +1,5 @@
 import Link from "next/link";
-import {
-    useNFTCollection,
-    useAddress,
-    useNFTs
-} from "@thirdweb-dev/react";
+import { useNFTCollection, useAddress, useNFTs } from "@thirdweb-dev/react";
 import { useRouter } from "next/router";
 import { Grid, Container, Card, Text, Row, Loading } from "@nextui-org/react";
 
@@ -15,7 +11,7 @@ const SingleNFTs = () => {
 
     const contract = useNFTCollection("0x7f214B42f8B53008cc1e81A93a9C8307624E4B26");
 
-    const { data: nfts, isLoading, error } = useNFTs(nftCollection, address);
+    const { data: nfts, isLoading, error } = useNFTs(contract, address);
 
     return (
         <Container fluid>

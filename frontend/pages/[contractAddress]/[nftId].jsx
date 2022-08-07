@@ -20,6 +20,10 @@ const NFT = () => {
     const { contract } = useContract(contractAddress);
     const { data: nft, isLoading } = useNFT(contract?.nft, nftId);
 
+    {/* Next To-Do's: 
+     [] 
+     */}
+
     return (
         <Layout>
             <div>

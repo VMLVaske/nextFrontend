@@ -1,13 +1,13 @@
-import { ThemeChanger } from './themeChanger';
+import { ThemeChanger } from '../navbar/themeChanger'
 import { Button, Grid, Spacer, Text, Image, Container, Row, Col } from '@nextui-org/react';
-import Logo from "../icons/HeartIcon"
+//import Logo from "../../icons/HeartIcon"
 
 import { useState } from "react";
 import { NetworkIndicator } from './NetworkIndicator';
 import { useRouter } from "next/router";
 import { useAddress, useDisconnect, useMetamask, useNetworkMismatch, useNetwork } from '@thirdweb-dev/react';
 
-import useAuthenticate from "../hooks/useAuthenticate";
+import useAuthenticate from "../../hooks/useAuthenticate";
 import truncateEthAddress from 'truncate-eth-address';
 
 export default function Navbar() {
@@ -28,8 +28,7 @@ export default function Navbar() {
         <Grid.Container gap={4} justify="center" alignItems="stretch">
             <Spacer />
             <Grid>
-                <Image src={Logo}
-                />
+                <Image/>
             </Grid>
             <Grid>
                 <Button onPress={() => router.push("/")}>

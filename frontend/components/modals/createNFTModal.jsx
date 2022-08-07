@@ -35,6 +35,15 @@ export default function CreateNFTModal() {
         }
     }
 
+    {/**
+        Ok well - this works... kinda. Next To-Do's: 
+        [x] make the input from the Input components work -> should work, but not tested ;P 
+        [] figure out how to upload a image for the NFT, coz NFT's without images kind of break the system coz the cards cannot display shit then :D 
+        [] [] a workaround is instead of uploading the file, submit a IPFS URI - however, if that is required, the app should also allow for IPFS file upload, no? 
+        [] if Loading is finished and no collections have been loaded (coz the user does not have any): display info that user has no collections
+        [] generally: createNFTModal only makes sense, if user already has collection - if user has no collection, they need to createCollection first before creating NFT
+     */}
+
     return (
         <div>
             <Button onPress={handler}>

@@ -8,18 +8,17 @@ const OwnedNFTs = () => {
     const router = useRouter();
 
     const address = useAddress();
-    const testAddress = "0x954184AD0Fbc67332Bab62a6c5958c4C5E2CFeC2";
+    //const testAddress = "0x954184AD0Fbc67332Bab62a6c5958c4C5E2CFeC2";
 
     const nftCollectionAddress = "0x7f214B42f8B53008cc1e81A93a9C8307624E4B26";
-    //const nftCollection = useNFTCollection(nftCollectionAddress);
+    const nftCollection = useNFTCollection(nftCollectionAddress);
 
-    const { contract } = useContract(nftCollectionAddress);
-    const { data: nfts, isLoading, error } = useOwnedNFTs(contract?.nft, testAddress)
-
+    //const contract = useContract(nftCollectionAddress);
+    const { data: nfts, isLoading, error } = useNFTs(nftCollection, address)
 
     return (
         <Container fluid>
-            <h3>My Collections</h3>
+            <h3>My NFTs</h3>
             {isLoading ? (
                 <Grid.Container gap={2} justify="center">
                     <Grid>

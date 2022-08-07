@@ -23,7 +23,7 @@ export default function User() {
                         <Spacer />
                         <Divider />
                         <Spacer />
-
+                        <SingleNFTs />
                     </Container>
                 </main>
             </div>
