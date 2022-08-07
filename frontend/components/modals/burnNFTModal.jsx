@@ -3,13 +3,17 @@ import { useState } from 'react';
 
 import { useNFTCollection } from '@thirdweb-dev/react';
 
-export default function BurnNFTModal(props) {
+import { useRouter } from 'next/router'
 
-    const nftCollection = useNFTCollection()
+export default function BurnNFTModal() {
+
+    const router = useRouter()
+    const { contractAddress } = router.query;
+    const { nftId } = router.query;
 
     const [visible, setVisible] = useState(false);
-    const [contract, setContract] = useState(props.NFTContract);
-    const [id, setId] = useState(props.tokenId);
+    const [contract, setContract] = useState(contractAddress);
+    const [id, setId] = useState(nftId);
 
     const handler = () => setVisible(true);
 
@@ -33,7 +37,7 @@ export default function BurnNFTModal(props) {
 
     return (
         <div>
-            <Button auto color="error" flat onClick={handler}>
+            <Button auto color="error" flat onPress={handler}>
                 Burn NFT
             </Button>
             <Modal
@@ -52,12 +56,12 @@ export default function BurnNFTModal(props) {
                 <Modal.Footer>
                     <Grid.Container gap={2} justify="center">
                         <Grid>
-                            <Button auto flat bordered onClick={closeHandler}>
+                            <Button auto flat bordered onPress={closeHandler}>
                                 No, take me back
                             </Button>
                         </Grid>
                         <Grid>
-                            <Button auto onClick={burnNft} color="error">
+                            <Button auto onPress={burnNft} color="error">
                                 Yes, burn NFT forever
                             </Button>
                         </Grid>

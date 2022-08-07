@@ -36,7 +36,7 @@ const SingleNFTs = () => {
                                         <Text b>{listing.metadata.name}</Text>
                                     </Link>
                                 </Card.Header>
-                                <Card.Body css={{ p: 0 }} key={listing.metadata.id} onClick={() => router.push(`/user/${listing.metadata.id}`)} >
+                                <Card.Body css={{ p: 0 }} key={listing.metadata.id} onPress={() => router.push(`/user/${listing.metadata.id}`)} >
                                     <Card.Image
                                         src={listing.metadata.image}
                                         objectFit="cover"

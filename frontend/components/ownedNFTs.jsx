@@ -1,9 +1,5 @@
 import Link from "next/link";
-import {
-    useNFTCollection,
-    useAddress,
-    useNFTs
-} from "@thirdweb-dev/react";
+import { useNFTCollection, useAddress, useNFTs, useContract, useOwnedNFTs } from "@thirdweb-dev/react";
 import { useRouter } from "next/router";
 import { Grid, Container, Card, Text, Row, Loading } from "@nextui-org/react";
 
@@ -12,11 +8,14 @@ const OwnedNFTs = () => {
     const router = useRouter();
 
     const address = useAddress();
+    const testAddress = "0x954184AD0Fbc67332Bab62a6c5958c4C5E2CFeC2";
 
     const nftCollectionAddress = "0x7f214B42f8B53008cc1e81A93a9C8307624E4B26";
-    const nftCollection = useNFTCollection(nftCollectionAddress);
+    //const nftCollection = useNFTCollection(nftCollectionAddress);
 
-    const { data: nfts, isLoading, error } = useNFTs(nftCollection, address);
+    const { contract } = useContract(nftCollectionAddress);
+    const { data: nfts, isLoading, error } = useOwnedNFTs(contract?.nft, testAddress)
+
 
     return (
         <Container fluid>
@@ -37,7 +36,11 @@ const OwnedNFTs = () => {
                                         <Text b>{listing.metadata.name}</Text>
                                     </Link>
                                 </Card.Header>
-                                <Card.Body css={{ p: 0 }} key={listing.metadata.id} onClick={() => router.push(`/${nftCollectionAddress}/${listing.metadata.id}`)} >
+                                <Card.Body
+                                    css={{ p: 0 }}
+                                    key={listing.metadata.id}
+                                    onClick={() => router.push(`/${nftCollectionAddress}/${listing.metadata.id}`)}
+                                >
                                     <Card.Image
                                         src={listing.metadata.image}
                                         objectFit="cover"
@@ -55,8 +58,7 @@ const OwnedNFTs = () => {
                         </Grid>
                     ))}
                 </Grid.Container>
-            )
-            }
+            )}
         </Container>
     );
 };

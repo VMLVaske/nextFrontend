@@ -5,14 +5,7 @@ import { Container, Button } from '@nextui-org/react';
 import type { NextPage } from 'next';
 
 import useAuthenticate from "../hooks/useAuthenticate"
-import {
-  useAddress,
-  useDisconnect,
-  useMetamask,
-  useNetworkMismatch,
-  useNetwork,
-  ChainId
-} from '@thirdweb-dev/react';
+import { useAddress, useDisconnect, useMetamask, useNetworkMismatch, useNetwork, ChainId } from '@thirdweb-dev/react';
 import { useState } from "react";
 
 
@@ -67,9 +60,9 @@ const Home: NextPage = () => {
             </h1>
             <h2>Wallet Connection - Frontend</h2>
             {address ? (
-              <button onClick={disconnect}>Disconnect Wallet</button>
+              <Button onPress={disconnect}>Disconnect Wallet</Button>
             ) : (
-              <button onClick={connectWithMetamask}>Connect Wallet</button>
+              <Button onPress={connectWithMetamask}>Connect Wallet</Button>
             )}
             <p>Connected Address: {address || "N/A"}</p>
 
@@ -78,12 +71,12 @@ const Home: NextPage = () => {
             {address ? (
               <>
                 {isLoggedIn ? (
-                  <button onClick={logoutWallet}>Logout</button>
+                  <Button onPress={logoutWallet}>Logout</Button>
                 ) : (
-                  <button onClick={signInWithEthereum}>Login with Wallet</button>
+                  <Button onPress={signInWithEthereum}>Login with Wallet</Button>
                 )}
 
-                <button onClick={authenticatedRequest}>Authenticate</button>
+                <Button onPress={authenticatedRequest}>Authenticate</Button>
 
                 <p>Logged In Address: {isLoggedIn ? address : "N/A"}</p>
                 <p>Authentication: {authMessage}</p>
@@ -91,7 +84,7 @@ const Home: NextPage = () => {
             ) : (
               <>Connect your wallet to access authentication.</>
             )}
-            { !isMitsmatched ? (<div>You're on the right network</div>) : (<Button onClick={() => switchNetwork(ChainId.Mumbai)}>Switch Network</Button>)}2
+            { !isMitsmatched ? (<div>You're on the right network</div>) : (<Button onPress={() => switchNetwork(ChainId.Mumbai)}>Switch Network</Button>)}2
           </Container>
         </main>
       </div>

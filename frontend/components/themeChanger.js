@@ -26,8 +26,7 @@ export const ThemeChanger = () => {
                 auto
                 color="error"
                 icon={<HeartIcon/>}
-                onClick={toggle}
-                flat
+                onPress={toggle}
             />
         </div>
     )

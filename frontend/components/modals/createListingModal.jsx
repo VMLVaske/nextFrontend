@@ -1,49 +1,97 @@
-import { useTheme } from 'next-themes';
-import { Form, Input, Button } from '@nextui-org/react';
-// got instructions from here: https://portal.thirdweb.com/guides/nft-marketplace-with-typescript-next 
+import { Button, Text, Modal, Input, Grid } from '@nextui-org/react'
+import { useState } from 'react';
 
-export const createListingModal = () => {
+import { useMarketplace, useSDK } from '@thirdweb-dev/react';
+import { NATIVE_TOKEN_ADDRESS } from '@thirdweb-dev/sdk';
+
+import { useRouter } from 'next/router'
+
+export default function CreateListingModal() {
+
+    const router = useRouter()
+    const { contractAddress } = router.query;
+    const { nftId } = router.query;
+
+    const [visible, setVisible] = useState(false);
+    const [contract, setContract] = useState(contractAddress);
+    const [id, setId] = useState(nftId);
+
+    const handler = () => setVisible(true);
+    const closeHandler = () => setVisible(false);
+
+    const sdk = useSDK();
+
+    const marketplace = useMarketplace(contract)
+
+    const createDirectListing = async () => {
+
+        const directListing = {
+            assetContractaddress: contract,
+            tokenId: id,
+            startTimestamp: new Date(),
+            listingDurationInSeconds: 86400,
+            quantity: 1,
+            currencyContractAddres: NATIVE_TOKEN_ADDRESS,
+            buyoutPricePerToken: "10",
+            reservePricePerToken: "1.5"
+        }
+
+        console.log(directListing)
+
+        try {
+            const tx = await marketplace.auction.createListing(directListing);
+            const receipt = tx.receipt;
+            console.log(receipt)
+            const listingId = tx.id;
+            console.log(listingId)
+        } catch (e) {
+            console.log("Creation of Listing failed", e)
+        }
+
+
+
+        closeHandler();
+    }
 
     return (
-        <Form onSubmit={(e) => handleCreateListing(e)}>
-            <div>
-                {/* Form Section */}
-                <div>
-                    <h1>Upload your NFT to the marketplace:</h1>
-
-                    {/* Toggle between direct listing and auction listing */}
-                    <div>
-                        <Input
-                            type="radio"
-                            name="listingType"
-                            id="directListing"
-                            value="directListing"
-                            defaultChecked
-                        />
-                        <Input
-                            type="radio"
-                            name="listingType"
-                            id="auctionListing"
-                            value="auctionListing"
-                        />
-                    </div>
-
-                    {/* NFT Contract Address Field */}
+        <div>
+            <Button onPress={handler}>
+                Sell
+            </Button>
+            <Modal
+                closeButton
+                open={visible}
+                onClose={closeHandler}
+            >
+                <Modal.Header>
+                    <Text b size={18}>
+                        Sell your NFT
+                    </Text>
+                </Modal.Header>
+                <Modal.Body>
                     <Input
-                        type="text"
-                        name="contractAddress"
-                        placeholder="NFT Contract Address"
+                        clearable
+                        bordered
+                        size="md"
+                        placeholder="Sell your NFT for what price..."
+                        aria-label='listing-price'
                     />
-
-                    {/* NFT Token ID Field */}
-                    <Input type="text" name="tokenId" placeholder="NFT Token ID" />
-
-                    {/* Sale Price For Listing Field */}
-                    <Input type="text" name="price" placeholder="Sale Price" />
-
-                    <Button type="submit">Create Listing</Button>
-                </div>
-            </div>
-        </Form>
-    )
+                </Modal.Body>
+                <Modal.Footer>
+                    <Grid.Container gap={2} justify="center">
+                        <Grid>
+                            <Button auto flat bordered onPress={closeHandler}>
+                                Cancel
+                            </Button>
+                        </Grid>
+                        <Grid>
+                            <Button auto onPress={createDirectListing}>
+                                Sell
+                            </Button>
+                        </Grid>
+                    </Grid.Container>
+                </Modal.Footer>
+            </Modal>
+        </div>
+    );
 }

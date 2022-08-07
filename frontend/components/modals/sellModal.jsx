@@ -30,27 +30,16 @@ export default function SellModal(props) {
                         <Input
                             clearable
                             bordered
-                            fullWidth
-                            color="primary"
-                            size="lg"
-                            placeholder="Email"
-                            contentLeft="Stuff Left"
-                        />
-                        <Input
-                            clearable
-                            bordered
-                            fullWidth
-                            color="primary"
-                            size="lg"
-                            placeholder="Password"
-                            contentLeft="Stuff Right"
+                            size="md"
+                            placeholder="Your selling price..."
+                            aria-label='selling-price'
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button auto flat color="error" onClick={closeHandler}>
+                        <Button auto flat color="error" onPress={closeHandler}>
                             Cancel
                         </Button>
-                        <Button auto bordered onClick={closeHandler}>
+                        <Button auto bordered onPress={closeHandler}>
                             Sell
                         </Button>
                     </Modal.Footer>
