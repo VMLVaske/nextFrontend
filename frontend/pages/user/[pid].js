@@ -17,12 +17,14 @@ const NFT = () => {
     const { data: nft, isLoading } = useNFT(contract?.nft, pid)
 
 
-    const marketPlace = useMarketplace("0xD3d4036F8BdA104bf7c7c483452267DEAF7640Ff")
-    const { mutate: createDirectListing, error } = useCreateDirectListing(marketPlace);
+    //const marketPlace = useMarketplace("0xD3d4036F8BdA104bf7c7c483452267DEAF7640Ff")
+    //const { mutate: createDirectListing, error } = useCreateDirectListing(marketPlace);
 
+    {/** 
     if (error) {
         console.error("failed to create direct listing", error);
     }
+    */}
 
     return (
         <Layout>

@@ -11,25 +11,17 @@ const NFT = () => {
 
     const address = useAddress();
     const router = useRouter()
-    const { pid } = router.query
+    const { contractAddress } = router.query;
+    const { nftId } = router.query;
 
-    const { contract } = useContract("0x7f214B42f8B53008cc1e81A93a9C8307624E4B26");
-    const { data: nft, isLoading } = useNFT(contract?.nft, pid)
-
-
-    const marketPlace = useMarketplace("0xD3d4036F8BdA104bf7c7c483452267DEAF7640Ff")
-    const { mutate: createDirectListing, error } = useCreateDirectListing(marketPlace);
-
-    if (error) {
-        console.error("failed to create direct listing", error);
-    }
+    const { contract } = useContract(contractAddress);
+    const { data: nft, isLoading } = useNFT(contract?.nft, nftId)
 
     return (
         <Layout>
             <div>
                 <main>
                     <Container fluid>
-                        <h1>This is right</h1>
                         <Spacer />
                         {isLoading ? (
                             <Grid.Container gap={2} justify="center">
@@ -44,7 +36,7 @@ const NFT = () => {
                                         <Text h1 b>{nft.metadata.name}</Text>
                                     </Col>
                                     <Col>
-                                        <Text blockquote>NFT Nr. {pid}</Text>
+                                        <Text blockquote>NFT Nr. {nftId}</Text>
                                     </Col>
                                     <Col>
                                         {""}
@@ -80,7 +72,7 @@ const NFT = () => {
                                                 </Grid>
                                                 <Grid>
                                                     <BurnNFTModal
-                                                        tokenId={pid}
+                                                        tokenId={nftId}
                                                         NftContract={contract}
                                                     />
                                                 </Grid>
