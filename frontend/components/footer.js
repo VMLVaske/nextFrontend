@@ -30,9 +30,7 @@ export default function Footer() {
                         <Table.Cell>Paused</Table.Cell>
                     </Table.Row>
                 </Table.Body>
-
             </Table>
         </Container>
-
     )
 }

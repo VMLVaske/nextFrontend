@@ -28,7 +28,7 @@ export default function Navbar() {
         <Grid.Container gap={4} justify="center" alignItems="stretch">
             <Spacer />
             <Grid>
-                <Image/>
+                <Image alt="logo" />
             </Grid>
             <Grid>
                 <Button onPress={() => router.push("/")}>
@@ -36,15 +36,16 @@ export default function Navbar() {
                 </Button>
             </Grid>
             <Grid>
-                <Button onPress={() => router.push("/collection")} >
-                    Collection
-                </Button>
-            </Grid>
-            <Grid>
                 <Button onPress={() => router.push("/marketplace")}>
                     Market
                 </Button>
             </Grid>
+            <Grid>
+                <Button onPress={() => router.push("/collection")} >
+                    Collection
+                </Button>
+            </Grid>
+
             <Grid>
                 <ThemeChanger />
             </Grid>

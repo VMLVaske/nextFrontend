@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MediaRenderer, useActiveListings, useMarketplace } from "@thirdweb-dev/react";
 import { useRouter } from "next/router";
-import { Grid, Container, Card, Text, Row, Loading, Spacer, Button} from "@nextui-org/react";
+import { Grid, Container, Card, Text, Row, Loading, Spacer, Button } from "@nextui-org/react";
 
 const ActiveMarketListings = () => {
 
@@ -15,7 +15,8 @@ const ActiveMarketListings = () => {
     return (
         <div>
             <Container fluid>
-                <h2>Active Market Listings</h2>
+                <h2>Closed Market Listings</h2>
+                {/*** 
                 {isLoading ? (
                     <Grid.Container gap={2} justify="center">
                         <Spacer />
@@ -27,9 +28,7 @@ const ActiveMarketListings = () => {
                     <div>
                         {listings = 'undefined' ? (
                             <Grid.Container gap={2} justify="center">
-                                <Grid>
-                                    <Button disabled >Currently no listings. Check again later. </Button>
-                                </Grid>
+                                <Text>Currently no listings. Check again later. </Text>
                             </Grid.Container>
                         ) : (
                             <Grid.Container gap={2} justify="center">
@@ -53,9 +52,16 @@ const ActiveMarketListings = () => {
                                     </Grid>
                                 })}
                             </Grid.Container>
-                        )}
+                        )
+                        }
                     </div>
                 )}
+                 */}
+                 <Grid.Container gap={2} justify="center">
+                     <Grid>
+                     <Button disabled> Feature not implemented yet. </Button>
+                     </Grid>
+                 </Grid.Container>
             </Container >
         </div >
     );

@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
-import { Container, Row, Text, Spacer, Divider, Col } from '@nextui-org/react';
+import { Container, Row, Text, Spacer, Divider, Col, Button } from '@nextui-org/react';
 
 import type { NextPage } from 'next';
-
 
 const Home: NextPage = () => {
 
@@ -17,25 +16,37 @@ const Home: NextPage = () => {
         </Head>
 
         <main>
-          <Container fluid>
+          <Container fluid responsive gap={3}>
+            <Spacer />
             <Row justify="center">
+
               <Text h1>
                 Main Page
               </Text>
             </Row>
             <Spacer />
-            <Row justify="center">
-              <Col xs={6}>
-                <Text>
-                  This is the frontend for the 4th weekend exercise from Encode.Club Solidity Bootcamp. 
-                  This page has the functionality to display a NFT Collection, as well as a NFT Marketplace.
+            <Spacer />
+            <Spacer />
+            <Row gap={3}>
+              <Col>
+                <Text h3>
+                  Register as Buyer
                 </Text>
+                <Spacer />
+                <Button>
+                  Register
+                </Button>
+              </Col>
+              <Col>
+                <Text h3>
+                  Register as Seller
+                </Text>
+                <Spacer />
+                <Button>
+                  Register
+                </Button>
               </Col>
             </Row>
-            <Divider />
-
-            <Row><Text h3>Prerequisites</Text></Row>
-            <Row><Text>User needs to have a collection </Text></Row>
           </Container>
         </main>
       </div>
