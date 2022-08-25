@@ -7,9 +7,9 @@ import { useState, useEffect } from 'react';
 
 export const ThemeChanger = () => {
     const { theme, setTheme } = useTheme();
-    console.log({theme})
+    // console.log({theme})
     const [mounted, setMounted] = useState(false)
-    console.log({mounted})
+    // console.log({mounted})
 
     // useEffect only runs on the client, so now we can safely show the UI
     useEffect(() => {

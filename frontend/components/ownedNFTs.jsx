@@ -10,7 +10,7 @@ const OwnedNFTs = () => {
     const address = useAddress();
     //const testAddress = "0x954184AD0Fbc67332Bab62a6c5958c4C5E2CFeC2";
 
-    const nftCollectionAddress = "0x7f214B42f8B53008cc1e81A93a9C8307624E4B26";
+    const nftCollectionAddress = "0xa98409ABB7048E672DCf0D2781B516835516BEF4";
     const nftCollection = useNFTCollection(nftCollectionAddress);
 
     //const contract = useContract(nftCollectionAddress);
