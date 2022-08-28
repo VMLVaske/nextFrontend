@@ -38,11 +38,11 @@ const ActiveMarketListings = () => {
         ) : (
           <div>
             {
-              (listings == "undefined" ? (
-
+              (listings = 'undefined' ? (
                 <Grid.Container gap={2} justify="center">
+                  {console.log("Listings: ", listings)}
                   <Grid>
-                    {console.log("Listings: ", listings)}
+
                     <Button disabled>
                       Currently no listings. Check again later.{" "}
                     </Button>
@@ -50,6 +50,7 @@ const ActiveMarketListings = () => {
                 </Grid.Container>
               ) : (
                 <Grid.Container gap={2} justify="center">
+                  {console.log("Listings: ", listings)}
                   {listings.map((index) => {
                     <Grid xs={6} sm={3}>
                       <Card isPressable isHoverable>
