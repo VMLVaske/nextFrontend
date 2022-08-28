@@ -2,6 +2,7 @@ import Layout from '../components/layout';
 import { Container, Row, Col, Divider, Button, Spacer, Text } from '@nextui-org/react';
 import ActiveMarketListings from '../components/activeMarketListings';
 import ClosedMarketListings from '../components/closedMarketListings';
+import AllMintedNFTs from "../components/allMintedNFTs";
 
 export default function Marketplace() {
 
@@ -20,7 +21,10 @@ export default function Marketplace() {
                         <Spacer />
                         <Divider />
                         <Spacer />
+                        {/*
                         <ClosedMarketListings />
+                        */}
+                        {/*<AllMintedNFTs /> */}
                         <Spacer />
                         <Divider />
                     </Container>

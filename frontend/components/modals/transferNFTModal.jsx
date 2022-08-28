@@ -1,31 +1,37 @@
 import { Button, Text, Modal, Input, Grid } from "@nextui-org/react";
 import { useState } from "react";
 
-import { useContract } from "@thirdweb-dev/react";
+import { useAddress, useContract, useContractCall } from '@thirdweb-dev/react';
 
 import { useRouter } from "next/router";
 
-export default function TransferNFTModal() {
-  const router = useRouter();
-  const { contractAddress } = router.query;
-  const { nftId } = router.query;
+export default function TransferNFTModal(props) {
 
+  const { contract } = useContract(process.env.NFT_COLLECTION_ADDRESS);
+
+  const address = useAddress();
+
+  // Modal
   const [visible, setVisible] = useState(false);
-  const [recipientAddress, setRecipientAddress] = useState(process.env.OWNER);
-
+  const [recipientAddress, setRecipientAddress] = useState()
+  
   const handler = () => setVisible(true);
   const closeHandler = () => setVisible(false);
 
-  const { contract } = useContract(contractAddress);
-
   const transferNFT = async () => {
+    console.log("Recipient Address: ", recipientAddress)
+    console.log("Address: ", address)
+    console.log("Recipient: ", recipientAddress);
+    console.log("NftId: ", nftId)
+    console.log("amount: ", amount)
     try {
-      await contract.nft.transfer(recipientAddress, nftId);
+      const data = await safeTransferFrom([address, recipientAddress, nftId, amount]);
+      console.info("contract call success", data)
       closeHandler();
     } catch (err) {
-      console.log("NFT transfer failed", err);
+      console.error("NFT transfer failed", err)
     }
-  };
+  }
 
   return (
     <div>
