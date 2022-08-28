@@ -12,13 +12,14 @@ const OwnedNFTs = () => {
 
     const address = useAddress();
 
-    const nftCollectionAddress = process.env.NFT_COLLECTION_ADDRESS;
-    const nftCollection = useNFTCollection(nftCollectionAddress);
-    const { data: nfts, isLoading, error } = useNFTs(nftCollection, address);
+    //const nftCollectionAddress = process.env.NFT_COLLECTION_ADDRESS;
+    //const nftCollection = useNFTCollection(nftCollectionAddress);
+    //const { data: nfts, isLoading, error } = useNFTs(nftCollection, address);
 
     // Contract address from Edition Drop Contract
     //const editionDropContract = useEditionDrop(process.env.EDITION_DROP);
-    //const { data: nfts, isLoading, error } = useNFTs(editionDropContract, {start: 0, count: 100});
+    const editionDropContract = useEditionDrop("0xedBBAFBfEf31D2bE63f10662F6CA5E197c617E3B");
+    const { data: nfts, isLoading, error } = useNFTs(editionDropContract, {start: 0, count: 100});
 
     return (
         <Container fluid justify="center">
