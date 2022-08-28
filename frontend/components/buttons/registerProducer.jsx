@@ -1,8 +1,7 @@
-import { Button, Text, Spacer, Row, Container, Badge } from '@nextui-org/react'
+import { Button, Text, Spacer, Row, Container, Badge, Divider } from '@nextui-org/react'
 import { useState } from "react";
 
 import { useAddress, useContract, useContractCall, useContractData } from '@thirdweb-dev/react';
-import { ethers } from "ethers"
 
 export default function registerProducer(props) {
 
@@ -38,6 +37,13 @@ export default function registerProducer(props) {
             </Row>
             <Spacer />
             <Container justify="center">
+                <Badge color="warning">Attention</Badge>
+                <Text i small>
+                    Registering a new users with a "MINTER_ROLE" needs to be done by an admin wallet.
+                </Text>
+                <Badge color="warning">Attention</Badge>
+                <Spacer />
+                <Divider />
                 <Text>
                     As a producer, you can buy items on the marketplace, but also produce your own items.
                 </Text>
@@ -56,19 +62,7 @@ export default function registerProducer(props) {
 
             </Row>
             <Spacer />
-            <Row justify="center">
-                <Badge color="error">Attention</Badge>
-                <Text i>
-                    Registering a new users with a "MINTER_ROLE" needs to be done by an admin wallet.
-                </Text>
-                <Spacer />
-            </Row>
-            <Row justify="center">
-                <Text i>
-                    The process involves changing the hardcoded address of the recipient of the role in the codebase.
-                </Text>
-                <Badge color="error">Attention</Badge>
-            </Row>
+
         </div>
     )
 }
