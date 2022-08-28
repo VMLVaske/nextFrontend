@@ -14,6 +14,9 @@ export default function TransferNFTModal(props) {
   // Modal
   const [visible, setVisible] = useState(false);
   const [recipientAddress, setRecipientAddress] = useState()
+  
+  const handler = () => setVisible(true);
+  const closeHandler = () => setVisible(false);
 
   const transferNFT = async () => {
     console.log("Recipient Address: ", recipientAddress)
