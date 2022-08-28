@@ -16,26 +16,27 @@ export default function CreateNFTModal() {
   // Mint new NFT
   const [nftName, setNftName] = useState("TestName");
   const [nftDescription, setNftDescription] = useState("TestDescription");
-  const [nftImage, setNftImage] = useState();
+  const [nftImage, setNftImage] = useState(null);
+  const [supply, setSupply] = useState(10);
 
   //mint many nfts (batch mint)
-  const metadataWithSupply = [
-    {
-      supply: 10,
-      metadata: {
-        name: "Bread NFT",
-        description: "This is a test nft",
-        // image: fs.readFileSync("")
-      },
+  const metadataWithSupply = {
+    supply: supply,
+    metadata: {
+      name: nftName || "Bread NFT",
+      description: nftDescription || "This is a test nft",
+      image: nftImage,
     },
-  ];
+  };
 
   const mint = async () => {
+    console.log("mint");
     try {
-      const tx = await edition.mintBatchTo(address, metadataWithSupply);
+      const tx = await edition.mintTo(address, metadataWithSupply);
       const receipt = tx[0].receipt;
       const firstTokenId = tx[0].id;
       const firstNft = await tx[0].data();
+      console.log(receipt, firstTokenId);
     } catch (e) {
       console.log("failed to mint batch NFT", e);
     }
@@ -44,9 +45,11 @@ export default function CreateNFTModal() {
   const retrieveFile = (e) => {
     const data = e.target.files[0];
     const reader = new window.FileReader();
-    reader.readAsArrayBuffer(data);
+    //reader.readAsArrayBuffer(data);
+    reader.readAsDataURL(data);
     reader.onloadend = () => {
-      console.log("Buffer data: ", Buffer(reader.result));
+      //console.log("Buffer data: ", Buffer(reader.result));
+      setNftImage(reader.result);
     };
 
     e.preventDefault();
@@ -74,7 +77,7 @@ export default function CreateNFTModal() {
             bordered
             color="default"
             size="md"
-            label="NFT name"
+            label="NFT name *"
             aria-label="name"
             type="text"
             onChange={(e) => setNftName(e.target.value)}
@@ -84,7 +87,7 @@ export default function CreateNFTModal() {
             bordered
             color="default"
             size="md"
-            label="NFT Description"
+            label="NFT Description *"
             aria-label="description"
             type="text"
             onChange={(e) => setNftDescription(e.target.value)}
@@ -106,10 +109,10 @@ export default function CreateNFTModal() {
             bordered
             color="default"
             size="md"
-            label="Supply Quantity"
+            label="Supply Quantity *"
             aria-label="name"
             type="number"
-            onChange={(e) => setNftName(e.target.value)}
+            onChange={(e) => setSupply(e.target.value)}
           />
           <input name="file" type="file" onChange={retrieveFile} />
         </Modal.Body>
