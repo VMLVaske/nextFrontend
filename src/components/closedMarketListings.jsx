@@ -19,9 +19,7 @@ import {
 const ActiveMarketListings = () => {
   const router = useRouter();
 
-  const marketplace = useMarketplace(
-    "0x26c350043E7147c12ee37D67f562ecee1909f1Ab"
-  );
+  const marketplace = useMarketplace(process.env.MARKETPLACE_ADDRESS);
   //console.log("Marketplace address: ", process.env.MARKETPLACE_ADDRESS)
 
   const { data: listings, isLoading, error } = useActiveListings(marketplace);

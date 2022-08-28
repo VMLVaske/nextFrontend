@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { useAddress, useEdition } from "@thirdweb-dev/react";
 
 export default function CreateNFTModal() {
-  const edition = useEdition("0xa98409ABB7048E672DCf0D2781B516835516BEF4");
+  const edition = useEdition(process.env.NFT_COLLECTION_ADDRESS);
   const address = useAddress();
 
   // Modal
