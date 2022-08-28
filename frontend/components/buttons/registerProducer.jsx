@@ -1,4 +1,4 @@
-import { Button, Text, Spacer, Row, Container } from '@nextui-org/react'
+import { Button, Text, Spacer, Row, Container, Badge } from '@nextui-org/react'
 import { useState } from "react";
 
 import { useAddress, useContract, useContractCall, useContractData } from '@thirdweb-dev/react';
@@ -29,28 +29,46 @@ export default function registerProducer(props) {
     }
 
 
-return (
-    <div>
-        <Row justify="center">
-            <Text h3>
-                Register as Producer
-            </Text>
-        </Row>
-        <Spacer />
-        <Container justify="center">
-            <Text>
-                As a producer, you can buy items on the marketplace, but also produce your own items.
-            </Text>
-            <Text>
-                Buying items on the marketplace will allow you to refine them, i.e. making bread into beer.
-            </Text>
-        </Container>
-        <Spacer />
-        <Row justify="center">
-            <Button onPress={call}>
-                Register
-            </Button>
-        </Row>
-    </div>
-)
+    return (
+        <div>
+            <Row justify="center">
+                <Text h3>
+                    Register as Producer
+                </Text>
+            </Row>
+            <Spacer />
+            <Container justify="center">
+                <Text>
+                    As a producer, you can buy items on the marketplace, but also produce your own items.
+                </Text>
+                <Text>
+                    Buying items on the marketplace will allow you to refine them, i.e. making bread into beer.
+                </Text>
+            </Container>
+            <Spacer />
+            <Row justify="center">
+                <Button onPress={call}>
+                    Register
+                </Button>
+            </Row>
+            <Spacer />
+            <Row justify="center">
+
+            </Row>
+            <Spacer />
+            <Row justify="center">
+                <Badge color="error">Attention</Badge>
+                <Text i>
+                    Registering a new users with a "MINTER_ROLE" needs to be done by an admin wallet.
+                </Text>
+                <Spacer />
+            </Row>
+            <Row justify="center">
+                <Text i>
+                    The process involves changing the hardcoded address of the recipient of the role in the codebase.
+                </Text>
+                <Badge color="error">Attention</Badge>
+            </Row>
+        </div>
+    )
 }
