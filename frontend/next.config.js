@@ -6,6 +6,7 @@ const nextConfig = {
     MARKETPLACE_ADDRESS: process.env.MARKETPLACE_ADDRESS,
     NFT_COLLECTION_ADDRESS: process.env.NFT_COLLECTION_ADDRESS,
     OWNER: process.env.OWNER,
+    PUBLIC_PROVIDER: process.env.PUBLIC_PROVIDER,
   },
 };
 
