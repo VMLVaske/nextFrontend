@@ -8,6 +8,7 @@
   * [Presentation](#presentation)
   * [Video](#demo-video)
   * [Techstack](#techstack)
+  * * [Chainlink Integration](#chainlink-integration)
   * [MISC](#misc)
 
 ## Steps To Use This Repo 
