@@ -1,22 +1,34 @@
 import Link from "next/link";
-import { MediaRenderer, useActiveListings, useMarketplace } from "@thirdweb-dev/react";
+import {
+  MediaRenderer,
+  useActiveListings,
+  useMarketplace,
+} from "@thirdweb-dev/react";
 import { useRouter } from "next/router";
-import { Grid, Container, Card, Text, Row, Loading, Spacer, Button } from "@nextui-org/react";
+import {
+  Grid,
+  Container,
+  Card,
+  Text,
+  Row,
+  Loading,
+  Spacer,
+  Button,
+} from "@nextui-org/react";
 
 const ActiveMarketListings = () => {
+  const router = useRouter();
 
-    const router = useRouter();
+  const marketplace = useMarketplace(process.env.MARKETPLACE_ADDRESS);
+  //console.log("Marketplace address: ", process.env.MARKETPLACE_ADDRESS)
 
-    const marketplace = useMarketplace("0x26c350043E7147c12ee37D67f562ecee1909f1Ab");
-    //console.log("Marketplace address: ", process.env.MARKETPLACE_ADDRESS)
+  const { data: listings, isLoading, error } = useActiveListings(marketplace);
 
-    const { data: listings, isLoading, error } = useActiveListings(marketplace);
-
-    return (
-        <div>
-            <Container fluid>
-                <h2>Closed Market Listings</h2>
-                {/*** 
+  return (
+    <div>
+      <Container fluid>
+        <h2>Closed Market Listings</h2>
+        {/*** 
                 {isLoading ? (
                     <Grid.Container gap={2} justify="center">
                         <Spacer />
@@ -57,14 +69,14 @@ const ActiveMarketListings = () => {
                     </div>
                 )}
                  */}
-                 <Grid.Container gap={2} justify="center">
-                     <Grid>
-                     <Button disabled> Feature not implemented yet. </Button>
-                     </Grid>
-                 </Grid.Container>
-            </Container >
-        </div >
-    );
+        <Grid.Container gap={2} justify="center">
+          <Grid>
+            <Button disabled> Feature not implemented yet. </Button>
+          </Grid>
+        </Grid.Container>
+      </Container>
+    </div>
+  );
 };
 
 export default ActiveMarketListings;
