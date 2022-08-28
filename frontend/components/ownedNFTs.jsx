@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useNFTCollection, useAddress, useNFTs, useContract, useOwnedNFTs } from "@thirdweb-dev/react";
 import { useRouter } from "next/router";
-import { Grid, Container, Card, Text, Row, Loading } from "@nextui-org/react";
+import { Grid, Container, Card, Text, Row, Loading, Button, Spacer } from "@nextui-org/react";
 
 const OwnedNFTs = () => {
 
@@ -32,7 +32,7 @@ const OwnedNFTs = () => {
                             <Card isPressable isHoverable>
                                 <Card.Header>
                                     <Link href={`/user/${listing.metadata.id}`}>
-                                        <Text b>{listing.metadata.name}</Text>
+                                        <Text h3 b>{listing.metadata.name}</Text>
                                     </Link>
                                 </Card.Header>
                                 <Card.Body
@@ -42,15 +42,35 @@ const OwnedNFTs = () => {
                                 >
                                     <Card.Image
                                         src={listing.metadata.image}
-                                        objectFit="cover"
-                                        height="100%"
+                                        height={192}
+                                        width={192}
                                         alt={listing.metadata.name}
                                     />
+                                    <Row justify="center">
+                                        <Spacer />
+                                        <Text>{listing.metadata.description}</Text>
+                                        <Spacer />
+                                    </Row>
+
                                 </Card.Body>
                                 <Card.Footer>
-                                    <Row justify="flex-start">
-                                        <Text>{listing.metadata.description}</Text>
-                                    </Row>
+                                    <Grid.Container gap={1}>
+                                        <Grid>
+                                        <Button auto flat>
+                                            Sell
+                                        </Button>
+                                        </Grid>
+                                        <Grid>
+                                        <Button auto color="error">
+                                            Burn
+                                        </Button>
+                                        </Grid>
+                                        <Grid>
+                                        <Button auto>
+                                            Refine
+                                        </Button>
+                                        </Grid>
+                                    </Grid.Container>
                                 </Card.Footer>
                             </Card>
                         </Grid>
