@@ -17,7 +17,7 @@ const OwnedNFTs = () => {
     //const { data: nfts, isLoading, error } = useNFTs(nftCollection, address)
 
     // Contract address from Edition Drop Contract
-    const editionDrop = useEditionDrop("0xedBBAFBfEf31D2bE63f10662F6CA5E197c617E3B");
+    const editionDrop = useEditionDrop(process.env.EDITION_DROP);
     const { data: nfts, isLoading, error } = useNFTs(editionDrop, {start: 0, count: 100});
 
     return (
