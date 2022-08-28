@@ -1,11 +1,11 @@
-import { Button, Text, Modal, Input, Grid } from '@nextui-org/react'
-import { useState } from 'react';
+import { Button, Text, Modal, Input, Grid, Spacer } from '@nextui-org/react'
+import { useState, useRef } from 'react';
 
-import { useAddress, useContract, useMintNFT, useNFTCollection } from '@thirdweb-dev/react';
+import { useAddress, useEdition } from '@thirdweb-dev/react';
 
 export default function CreateNFTModal() {
 
-    const contract = useNFTCollection("0x7f214B42f8B53008cc1e81A93a9C8307624E4B26");
+    const edition = useEdition("0xa98409ABB7048E672DCf0D2781B516835516BEF4");
     const address = useAddress();
 
     // Modal
@@ -18,22 +18,39 @@ export default function CreateNFTModal() {
     const [nftName, setNftName] = useState("TestName");
     const [nftDescription, setNftDescription] = useState("TestDescription");
     const [nftImage, setNftImage] = useState();
-
-    const { mutate: minftNft, isLoading, error } = useMintNFT(contract?.nft);
+   
+    //mint many nfts (batch mint)
+    const metadataWithSupply = [{
+        supply:10,
+        metadata:{
+            name: "Bread NFT",
+            description: "This is a test nft"
+            // image: fs.readFileSync("")
+        }
+    }];
 
     const mint = async () => {
-        const metadata = {
-            name: nftName,
-            description: nftDescription,
+        try{
+            const tx = await edition.mintBatchTo(address, metadataWithSupply);
+            const receipt = tx[0].receipt;
+            const firstTokenId = tx[0].id;
+            const firstNft = await tx[0].data();
+        }catch(e){
+            console.log("failed to mint batch NFT",e)
         }
-        console.log(metadata)
-        try {
-            await contract.mintTo(address, metadata)
-            closeHandler();
-        } catch (err) {
-            console.log("Failed to mint NFT", err)
+    };
+
+
+    const retrieveFile = (e) => {
+        const data = e.target.files[0];
+        const reader = new window.FileReader();
+        reader.readAsArrayBuffer(data);
+        reader.onloadend = () => {
+          console.log("Buffer data: ", Buffer(reader.result));
         }
-    }
+    
+        e.preventDefault();  
+      }
 
     return (
         <div>
@@ -42,6 +59,7 @@ export default function CreateNFTModal() {
             </Button>
             <Modal scroll
                 width="600px"
+                fullScreen
                 closeButton
                 open={visible}
                 onClose={closeHandler}
@@ -83,6 +101,18 @@ export default function CreateNFTModal() {
                         helperText='Please provide IPFS URI or use ThirdWeb Dashboard Interface'
                         onChange={e => setNftImage(e.target.value)}
                     />
+                    <Spacer y={0.5}/>
+                    <Input
+                        clearable
+                        bordered
+                        color="default"
+                        size="md"
+                        label="Supply Quantity"
+                        aria-label='name'
+                        type="number"
+                        onChange={e => setNftName(e.target.value)}
+                    />
+                    <input name="file" type="file" onChange={retrieveFile}/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Grid.Container gap={2} justify="center">

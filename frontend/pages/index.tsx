@@ -4,6 +4,9 @@ import { Container, Row, Text, Spacer, Divider, Col, Button } from '@nextui-org/
 
 import type { NextPage } from 'next';
 
+import RegisterBuyer from '../components/buttons/registerBuyer';
+import RegisterProducer from '../components/buttons/registerProducer';
+
 const Home: NextPage = () => {
 
   return (
@@ -16,7 +19,7 @@ const Home: NextPage = () => {
         </Head>
 
         <main>
-          <Container fluid responsive gap={3}>
+          <Container fluid md gap={3}>
             <Spacer />
             <Row justify="center">
 
@@ -27,25 +30,14 @@ const Home: NextPage = () => {
             <Spacer />
             <Spacer />
             <Spacer />
-            <Row gap={3}>
-              <Col>
-                <Text h3>
-                  Register as Buyer
-                </Text>
-                <Spacer />
-                <Button>
-                  Register
-                </Button>
-              </Col>
-              <Col>
-                <Text h3>
-                  Register as Seller
-                </Text>
-                <Spacer />
-                <Button>
-                  Register
-                </Button>
-              </Col>
+            <Row justify="center">
+              <RegisterBuyer />
+            </Row>
+            <Spacer />
+            <Divider />
+            <Spacer />
+            <Row justify="center">
+              <RegisterProducer />
             </Row>
           </Container>
         </main>
