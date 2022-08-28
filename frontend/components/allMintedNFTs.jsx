@@ -11,7 +11,7 @@ const AllMintedNFTs = () => {
 
     const router = useRouter();
 
-    const editionDrop = useEditionDrop(process.env.EDITION_DROP);
+    const editionDrop = useEditionDrop("0xedBBAFBfEf31D2bE63f10662F6CA5E197c617E3B");
     const { data: nfts, isLoading, error } = useNFTs(editionDrop, { start: 0, count: 100 });
 
     return (
@@ -36,14 +36,14 @@ const AllMintedNFTs = () => {
                         ) : (
                             <Grid.Container gap={2} justify="center">
                                 {
-                                    nfts.map((index) => {
+                                    nfts.map((index) => (
                                         <Grid>
                                             <Text>
                                                 Header: {index.metadata.name}
                                                 console.log("Header: ", index.metadata.name)
                                             </Text>
                                         </Grid>
-                                    })
+                                    ))
 
                                 }
                             </Grid.Container>

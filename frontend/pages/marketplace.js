@@ -24,7 +24,7 @@ export default function Marketplace() {
                         {/*
                         <ClosedMarketListings />
                         */}
-                        <AllMintedNFTs />
+                        {/*<AllMintedNFTs /> */}
                         <Spacer />
                         <Divider />
                     </Container>

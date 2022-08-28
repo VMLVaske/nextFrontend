@@ -12,13 +12,13 @@ const OwnedNFTs = () => {
 
     const address = useAddress();
 
-    //const nftCollectionAddress = "0xa98409ABB7048E672DCf0D2781B516835516BEF4";
-    //const contract = useContract(nftCollectionAddress);
-    //const { data: nfts, isLoading, error } = useNFTs(nftCollection, address)
+    const nftCollectionAddress = process.env.NFT_COLLECTION_ADDRESS;
+    const nftCollection = useNFTCollection(nftCollectionAddress);
+    const { data: nfts, isLoading, error } = useNFTs(nftCollection, address);
 
     // Contract address from Edition Drop Contract
-    const editionDrop = useEditionDrop(process.env.EDITION_DROP);
-    const { data: nfts, isLoading, error } = useNFTs(editionDrop, {start: 0, count: 100});
+    //const editionDropContract = useEditionDrop(process.env.EDITION_DROP);
+    //const { data: nfts, isLoading, error } = useNFTs(editionDropContract, {start: 0, count: 100});
 
     return (
         <Container fluid justify="center">
@@ -31,6 +31,8 @@ const OwnedNFTs = () => {
                 </Grid.Container>
             ) : (
                 <Grid.Container gap={2} justify="center">
+                    {console.log("is Loading: ", isLoading)}
+                    {console.log("nfts: ", nfts)}
                     {nfts.map((listing) => (
                         <Grid xs={6} sm={3}>
                             <Card isPressable isHoverable>
