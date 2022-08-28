@@ -24,7 +24,6 @@ const ActiveMarketListings = () => {
 
   const { data: listings, isLoading, error } = useActiveListings(marketplace);
 
-<<<<<<< Updated upstream
   return (
     <div>
       <Container fluid>
@@ -39,9 +38,11 @@ const ActiveMarketListings = () => {
         ) : (
           <div>
             {
-              (listings = "undefined" ? (
+              (listings == "undefined" ? (
+
                 <Grid.Container gap={2} justify="center">
                   <Grid>
+                    {console.log("Listings: ", listings)}
                     <Button disabled>
                       Currently no listings. Check again later.{" "}
                     </Button>
@@ -76,58 +77,6 @@ const ActiveMarketListings = () => {
       </Container>
     </div>
   );
-=======
-    const { data: listings, isLoading, error } = useActiveListings(marketplace);
-
-    return (
-        <div>
-            <Container fluid>
-                <h2>Active Market Listings</h2>
-                {isLoading ? (
-                    <Grid.Container gap={2} justify="center">
-                        <Spacer />
-                        <Grid>
-                            <Loading type="points" />
-                        </Grid>
-                    </Grid.Container>
-                ) : (
-                    <div>
-                        {(listings.length == 0) ? (
-                            <Grid.Container gap={2} justify="center">
-                                <Grid>
-                                    <Button disabled >Currently no listings. Check again later. </Button>
-                                </Grid>
-                            </Grid.Container>
-                        ) : (
-                            <Grid.Container gap={2} justify="center">
-                                {console.log("Listings: ", listings)}
-                                {listings.map((index) => {
-                                    <Grid xs={6} sm={3}>
-                                        <Card isPressable isHoverable>
-                                            <Card.Header>
-                                                <Text b>{index.asset.name}</Text>
-                                                {console.log(index.asset.name)}
-                                            </Card.Header>
-                                            <Card.Body
-                                                css={{ p: 0 }}
-                                                key={index.asset.id}
-                                                onPress={() => router.push(`/listing/${index.asset.id}`)}
-                                            >
-                                                <Text b>
-                                                    {index.asset.description}
-                                                </Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Grid>
-                                })}
-                            </Grid.Container>
-                        )}
-                    </div>
-                )}
-            </Container >
-        </div >
-    );
->>>>>>> Stashed changes
 };
 
 export default ActiveMarketListings;

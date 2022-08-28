@@ -1,32 +1,24 @@
 import Link from "next/link";
-import {
-    useNFTCollection,
-    useAddress,
-    useNFTs,
-    useContract,
-    useEditionDrop,
-} from "@thirdweb-dev/react";
+import { useNFTCollection, useAddress, useNFTs, useContract, useOwnedNFTs, useEditionDrop } from "@thirdweb-dev/react";
 import { useRouter } from "next/router";
-import {
-    Grid,
-    Container,
-    Card,
-    Text,
-    Row,
-    Button,
-    Spacer,
-    Loading
-} from "@nextui-org/react";
+import { Grid, Container, Card, Text, Row, Loading, Button, Spacer, Divider } from "@nextui-org/react";
+
+import SellModal from "./modals/sellModal";
+import TransferNFTModal from "./modals/transferNFTModal";
+import MintNFtModal from "./modals/mintNFTModal";
 
 const OwnedNFTs = () => {
     const router = useRouter();
 
     const address = useAddress();
 
-    const contract = useEditionDrop("0xedBBAFBfEf31D2bE63f10662F6CA5E197c617E3B");
-
+    //const nftCollectionAddress = "0xa98409ABB7048E672DCf0D2781B516835516BEF4";
     //const contract = useContract(nftCollectionAddress);
-    const { data: nfts, isLoading, error } = useNFTs(contract, {start: 0, count: 100})
+    //const { data: nfts, isLoading, error } = useNFTs(nftCollection, address)
+
+    // Contract address from Edition Drop Contract
+    const editionDrop = useEditionDrop("0xedBBAFBfEf31D2bE63f10662F6CA5E197c617E3B");
+    const { data: nfts, isLoading, error } = useNFTs(editionDrop, {start: 0, count: 100});
 
     return (
         <Container fluid justify="center">
@@ -66,21 +58,38 @@ const OwnedNFTs = () => {
 
                                 </Card.Body>
                                 <Card.Footer>
-                                    <Grid.Container gap={1}>
+                                    <Grid.Container gap={1} justify="center">
+                                        <Divider />
                                         <Grid>
-                                            <Button auto flat>
-                                                Sell
-                                            </Button>
+                                        <Button auto flat>
+                                            Sell
+                                        </Button>
+                                        </Grid>
+                                        <Grid>
+                                        <Button auto color="error">
+                                            Burn
+                                        </Button>
+                                        </Grid>
+
+                                        <Divider />
+                                        <Grid>
+                                        <Button auto>
+                                            Refine
+                                        </Button>
+                                        </Grid>
+
+                                        <Grid>
+                                            <SellModal NftId={listing.metadata.id.toNumber()} />
+                                        </Grid>
+                                        <Divider />
+                                        <Grid>
+                                            <TransferNFTModal NftId={listing.metadata.id.toNumber()} />
                                         </Grid>
                                         <Grid>
                                             <Button auto color="error">
                                                 Burn
                                             </Button>
-                                        </Grid>
-                                        <Grid>
-                                            <Button auto>
-                                                Refine
-                                            </Button>
+
                                         </Grid>
                                     </Grid.Container>
                                 </Card.Footer>
