@@ -43,8 +43,7 @@ const OwnedNFTs = () => {
                                     <Card.Image
                                         src={listing.metadata.image}
                                         objectFit="cover"
-                                        width="100%"
-                                        height={140}
+                                        height="100%"
                                         alt={listing.metadata.name}
                                     />
                                 </Card.Body>
