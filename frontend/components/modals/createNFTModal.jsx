@@ -30,13 +30,14 @@ export default function CreateNFTModal() {
   };
 
   const mint = async () => {
-    console.log("mint");
+    console.log("minting...");
     try {
       const tx = await edition.mintTo(address, metadataWithSupply);
       const receipt = tx[0].receipt;
       const firstTokenId = tx[0].id;
       const firstNft = await tx[0].data();
-      console.log(receipt, firstTokenId);
+      console.log("receipt ", receipt, firstTokenId);
+      alert("minted nft at " + receipt.transactionHash);
     } catch (e) {
       console.log("failed to mint batch NFT", e);
     }
