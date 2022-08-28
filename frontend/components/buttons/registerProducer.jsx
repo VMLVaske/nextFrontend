@@ -2,6 +2,7 @@ import { Button, Text, Spacer, Row, Container, Badge, Divider } from '@nextui-or
 import { useState } from "react";
 
 import { useAddress, useContract, useContractCall, useContractData } from '@thirdweb-dev/react';
+import { Container, Row, Text, Badge, Spacer, Button } from "@nextui-org/react";
 
 export default function registerProducer(props) {
 
