@@ -2,7 +2,6 @@ import { Button, Text, Spacer, Row, Container, Badge, Divider } from '@nextui-or
 import { useState } from "react";
 
 import { useAddress, useContract, useContractCall, useContractData } from '@thirdweb-dev/react';
-import { Container, Row, Text, Badge, Spacer, Button } from "@nextui-org/react";
 
 export default function registerProducer(props) {
 
@@ -38,11 +37,9 @@ export default function registerProducer(props) {
             </Row>
             <Spacer />
             <Container justify="center">
-                <Badge color="warning">Attention</Badge>
                 <Text i small>
                     Registering a new users with a "MINTER_ROLE" needs to be done by an admin wallet.
                 </Text>
-                <Badge color="warning">Attention</Badge>
                 <Spacer />
                 <Divider />
                 <Text>
