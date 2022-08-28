@@ -4,8 +4,11 @@ import { useRouter } from "next/router";
 import { Grid, Container, Card, Text, Row, Loading, Button, Spacer, Divider } from "@nextui-org/react";
 
 import SellModal from "./modals/sellModal";
+import BuyModal from "./modals/buyModal";
 import TransferNFTModal from "./modals/transferNFTModal";
 import MintNFtModal from "./modals/mintNFTModal";
+import BurnNFTModal from "./modals/burnNFTModal";
+import UseNFTModal from "./modals/useNFTModal";
 
 const OwnedNFTs = () => {
     const router = useRouter();
@@ -19,7 +22,7 @@ const OwnedNFTs = () => {
     // Contract address from Edition Drop Contract
     //const editionDropContract = useEditionDrop(process.env.EDITION_DROP);
     const editionDropContract = useEditionDrop("0xedBBAFBfEf31D2bE63f10662F6CA5E197c617E3B");
-    const { data: nfts, isLoading, error } = useNFTs(editionDropContract, {start: 0, count: 100});
+    const { data: nfts, isLoading, error } = useNFTs(editionDropContract, { start: 0, count: 100 });
 
     return (
         <Container fluid justify="center">
@@ -32,8 +35,6 @@ const OwnedNFTs = () => {
                 </Grid.Container>
             ) : (
                 <Grid.Container gap={2} justify="center">
-                    {console.log("is Loading: ", isLoading)}
-                    {console.log("nfts: ", nfts)}
                     {nfts.map((listing) => (
                         <Grid xs={6} sm={3}>
                             <Card isPressable isHoverable>
@@ -49,8 +50,6 @@ const OwnedNFTs = () => {
                                 >
                                     <Card.Image
                                         src={listing.metadata.image}
-                                        height={192}
-                                        width={192}
                                         alt={listing.metadata.name}
                                     />
                                     <Row justify="center">
@@ -58,29 +57,13 @@ const OwnedNFTs = () => {
                                         <Text>{listing.metadata.description}</Text>
                                         <Spacer />
                                     </Row>
-
                                 </Card.Body>
                                 <Card.Footer>
                                     <Grid.Container gap={1} justify="center">
                                         <Divider />
                                         <Grid>
-                                        <Button auto flat>
-                                            Sell
-                                        </Button>
+                                            <BuyModal NftId={listing.metadata.id.toNumber()}/>
                                         </Grid>
-                                        <Grid>
-                                        <Button auto color="error">
-                                            Burn
-                                        </Button>
-                                        </Grid>
-
-                                        <Divider />
-                                        <Grid>
-                                        <Button auto>
-                                            Refine
-                                        </Button>
-                                        </Grid>
-
                                         <Grid>
                                             <SellModal NftId={listing.metadata.id.toNumber()} />
                                         </Grid>
@@ -89,10 +72,14 @@ const OwnedNFTs = () => {
                                             <TransferNFTModal NftId={listing.metadata.id.toNumber()} />
                                         </Grid>
                                         <Grid>
-                                            <Button auto color="error">
-                                                Burn
-                                            </Button>
-
+                                            <BurnNFTModal NftId={listing.metadata.id.toNumber()} />
+                                        </Grid>
+                                        <Divider />
+                                        <Grid>
+                                            <MintNFtModal NftId={listing.metadata.id.toNumber()} />
+                                        </Grid>
+                                        <Grid>
+                                            <UseNFTModal NftId={listing.metadata.id.toNumber()} />
                                         </Grid>
                                     </Grid.Container>
                                 </Card.Footer>

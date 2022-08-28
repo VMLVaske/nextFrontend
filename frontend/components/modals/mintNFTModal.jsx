@@ -23,6 +23,7 @@ export default function MintNFtModal(props) {
         console.log("inside mint function")
         try {
             console.info("contract call successs", data);
+            closeHandler();
         } catch (err) {
             console.error("contract call failure", err);
         }
@@ -31,7 +32,7 @@ export default function MintNFtModal(props) {
 
     return (
         <div>
-            <Button auto flat color="warning" onPress={handler}>
+            <Button auto flat color="secondary" onPress={handler}>
                 Mint
             </Button>
             <Modal scroll

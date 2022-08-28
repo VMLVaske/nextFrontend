@@ -18,7 +18,11 @@ import {
 } from "@nextui-org/react";
 
 import SellModal from "./modals/sellModal";
+import BuyModal from "./modals/buyModal";
 import TransferNFTModal from "./modals/transferNFTModal";
+import MintNFtModal from "./modals/mintNFTModal";
+import BurnNFTModal from "./modals/burnNFTModal";
+import UseNFTModal from "./modals/useNFTModal";
 
 const ActiveMarketListings = () => {
   const router = useRouter();
@@ -69,8 +73,6 @@ const ActiveMarketListings = () => {
                         >
                           <Card.Image
                             src={index.asset.image}
-                            height={192}
-                            width={192}
                             alt={index.asset.name}
                           />
                           <Text b>{index.asset.description}</Text>
@@ -79,23 +81,8 @@ const ActiveMarketListings = () => {
                           <Grid.Container gap={1} justify="center">
                             <Divider />
                             <Grid>
-                              <Button auto flat>
-                                Sell
-                              </Button>
+                              <BuyModal NftId={index.asset.id.toNumber()} />
                             </Grid>
-                            <Grid>
-                              <Button auto color="error">
-                                Burn
-                              </Button>
-                            </Grid>
-
-                            <Divider />
-                            <Grid>
-                              <Button auto>
-                                Refine
-                              </Button>
-                            </Grid>
-
                             <Grid>
                               <SellModal NftId={index.asset.id.toNumber()} />
                             </Grid>
@@ -104,10 +91,14 @@ const ActiveMarketListings = () => {
                               <TransferNFTModal NftId={index.asset.id.toNumber()} />
                             </Grid>
                             <Grid>
-                              <Button auto color="error">
-                                Burn
-                              </Button>
-
+                              <BurnNFTModal NftId={index.asset.id.toNumber()} />
+                            </Grid>
+                            <Divider />
+                            <Grid>
+                              <MintNFtModal NftId={index.asset.id.toNumber()} />
+                            </Grid>
+                            <Grid>
+                              <UseNFTModal NftId={index.asset.id.toNumber()} />
                             </Grid>
                           </Grid.Container>
                         </Card.Footer>
