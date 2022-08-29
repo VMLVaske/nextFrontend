@@ -44,6 +44,7 @@ export default function CreateListingModal() {
             console.log(receipt)
             const listingId = tx.id;
             console.log(listingId)
+            closeHandler();
         } catch (e) {
             console.log("Creation of Listing failed", e)
         }

@@ -2,7 +2,7 @@ import { Button, Text, Modal, Input } from '@nextui-org/react'
 import { useState } from "react";
 import { useMarketplace } from '@thirdweb-dev/react'
 
-export default function SellModal(props) {
+export default function UseNFTModal(props) {
 
     // Marketplace 
     const marketplace = useMarketplace("0x26c350043E7147c12ee37D67f562ecee1909f1Ab")
@@ -47,7 +47,6 @@ export default function SellModal(props) {
             const receipt = tx.receipt; // the transaction receipt
             const listingId = tx.id; // the id of the newly created listing
             closeHandler();
-
         } catch (e) {
             console.log("failed to create direct listing for NFT", e)
         }
@@ -55,8 +54,8 @@ export default function SellModal(props) {
 
     return (
         <div>
-            <Button auto flat color="error" onPress={handler}>
-                Sell
+            <Button auto flat color="success">
+                Use
             </Button>
             <Modal
                 closeButton

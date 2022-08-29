@@ -35,7 +35,7 @@ export default function TransferNFTModal(props) {
 
   return (
     <div>
-      <Button bordered onPress={handler}>
+      <Button flat onPress={handler} auto color="warning">
         Transfer
       </Button>
       <Modal closeButton open={visible} onClose={closeHandler}>

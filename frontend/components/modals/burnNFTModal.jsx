@@ -18,8 +18,7 @@ export default function BurnNFTModal() {
     const handler = () => setVisible(true);
 
     const burnNft = async () => {
-        const nftCollection = useNFTCollection(contract);
-        const result = await nftCollection.burn(id);
+        console.log("Inside burnNFT method of BurnNFTModal - code needs to be added here. ")
         setVisible(false);
     }
 
@@ -37,8 +36,8 @@ export default function BurnNFTModal() {
 
     return (
         <div>
-            <Button auto color="error" flat onPress={handler}>
-                Burn NFT
+            <Button auto flat color="error" onPress={handler}>
+                Burn
             </Button>
             <Modal
                 closeButton

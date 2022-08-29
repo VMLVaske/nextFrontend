@@ -2,7 +2,7 @@ import { Button, Text, Modal, Input } from '@nextui-org/react'
 import { useState } from "react";
 import { useMarketplace } from '@thirdweb-dev/react'
 
-export default function SellModal(props) {
+export default function BuyModal(props) {
 
     // Marketplace 
     const marketplace = useMarketplace("0x26c350043E7147c12ee37D67f562ecee1909f1Ab")
@@ -40,14 +40,10 @@ export default function SellModal(props) {
         buyoutPricePerToken,
     }
 
-    const sell = async () => {
-        console.log("Listing: ", listing)
+    const buy = async () => {
         try {
-            const tx = await marketplace.direct.createListing(listing);
-            const receipt = tx.receipt; // the transaction receipt
-            const listingId = tx.id; // the id of the newly created listing
+            console.log("inside buy method of BuyModal component - code needs to be added here")
             closeHandler();
-
         } catch (e) {
             console.log("failed to create direct listing for NFT", e)
         }
@@ -55,8 +51,8 @@ export default function SellModal(props) {
 
     return (
         <div>
-            <Button auto flat color="error" onPress={handler}>
-                Sell
+            <Button auto flat onPress={handler}>
+                Buy
             </Button>
             <Modal
                 closeButton
@@ -66,7 +62,7 @@ export default function SellModal(props) {
             >
                 <Modal.Header>
                     <Text id="modal-title" b size={18}>
-                        Sell your NFT
+                        Buy more NFTs
                     </Text>
                 </Modal.Header>
                 <Modal.Body>
@@ -74,28 +70,18 @@ export default function SellModal(props) {
                         clearable
                         bordered
                         size="md"
-                        placeholder="How many do you want to sell?"
+                        placeholder="How many do you want to buy?"
                         aria-label='selling-quantity'
                         type="number"
                         onChange={e => setQuantity(e.target.value)}
                     />
-                    <Input
-                        clearable
-                        bordered
-                        size="md"
-                        placeholder="Your selling price..."
-                        aria-label='selling-price'
-                        type="number"
-                        onChange={e => setBuyoutPricePerToken(e.target.value)}
-                    />
-
                 </Modal.Body>
                 <Modal.Footer>
                     <Button auto flat color="error" onPress={closeHandler}>
                         Cancel
                     </Button>
-                    <Button auto onPress={sell}>
-                        Sell
+                    <Button auto onPress={buy}>
+                        Buy
                     </Button>
                 </Modal.Footer>
             </Modal>
