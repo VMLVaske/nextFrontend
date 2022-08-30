@@ -12,7 +12,6 @@ import {
 //import Logo from "../../icons/HeartIcon"
 
 import { useState } from "react";
-import { NetworkIndicator } from "./NetworkIndicator";
 import { useRouter } from "next/router";
 import {
   useAddress,
@@ -74,9 +73,6 @@ export default function Navbar() {
             Connect Wallet
           </Button>
         )}
-      </Grid>
-      <Grid>
-        <NetworkIndicator />
       </Grid>
     </Grid.Container>
   );
