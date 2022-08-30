@@ -7,7 +7,7 @@ import {
   Container,
   Row,
   Col,
-  Avatar,
+  Link
 } from "@nextui-org/react";
 import Logo from "../../public/agronomy.png";
 import Image from 'next/image'
@@ -49,6 +49,7 @@ export default function Navbar() {
           width={64}
           height={64}
         />
+
       </Grid>
       <Grid>
         <Button onPress={() => router.push("/")}>Home</Button>

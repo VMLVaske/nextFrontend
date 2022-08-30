@@ -10,6 +10,8 @@ import MintNFtModal from "./modals/mintNFTModal";
 import BurnNFTModal from "./modals/burnNFTModal";
 import UseNFTModal from "./modals/useNFTModal";
 
+import NftCardButtons from "./buttons/nftCardButtons";
+
 const OwnedNFTs = () => {
     const router = useRouter();
 
@@ -51,6 +53,8 @@ const OwnedNFTs = () => {
                                     <Card.Image
                                         src={listing.metadata.image}
                                         alt={listing.metadata.name}
+                                        width={128}
+                                        height={128}
                                     />
                                     <Row justify="center">
                                         <Spacer />
@@ -59,29 +63,7 @@ const OwnedNFTs = () => {
                                     </Row>
                                 </Card.Body>
                                 <Card.Footer>
-                                    <Grid.Container gap={1} justify="center">
-                                        <Divider />
-                                        <Grid>
-                                            <BuyModal NftId={listing.metadata.id.toNumber()}/>
-                                        </Grid>
-                                        <Grid>
-                                            <SellModal NftId={listing.metadata.id.toNumber()} />
-                                        </Grid>
-                                        <Divider />
-                                        <Grid>
-                                            <TransferNFTModal NftId={listing.metadata.id.toNumber()} />
-                                        </Grid>
-                                        <Grid>
-                                            <BurnNFTModal NftId={listing.metadata.id.toNumber()} />
-                                        </Grid>
-                                        <Divider />
-                                        <Grid>
-                                            <MintNFtModal NftId={listing.metadata.id.toNumber()} />
-                                        </Grid>
-                                        <Grid>
-                                            <UseNFTModal NftId={listing.metadata.id.toNumber()} />
-                                        </Grid>
-                                    </Grid.Container>
+                                    <NftCardButtons NftId={listing.metadata.id.toNumber()} />
                                 </Card.Footer>
                             </Card>
                         </Grid>
