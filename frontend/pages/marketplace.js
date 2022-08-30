@@ -26,7 +26,6 @@ export default function Marketplace() {
                         */}
                         {/*<AllMintedNFTs /> */}
                         <Spacer />
-                        <Divider />
                     </Container>
                 </main>
             </div>
