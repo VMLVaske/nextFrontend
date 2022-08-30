@@ -8,8 +8,9 @@ import {
   Container,
   Row,
   Col,
+  Avatar,
 } from "@nextui-org/react";
-//import Logo from "../../icons/HeartIcon"
+import Logo from "../../public/agronomy.png";
 
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -41,7 +42,7 @@ export default function Navbar() {
     <Grid.Container gap={3} justify="center" alignItems="stretch">
       <Spacer />
       <Grid>
-        <Image alt="logo" />
+        <Image src="../../public/agronomy.png" alt="bread>beer>bread" />
       </Grid>
       <Grid>
         <Button onPress={() => router.push("/")}>Home</Button>

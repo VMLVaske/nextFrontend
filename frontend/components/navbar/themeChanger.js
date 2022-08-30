@@ -18,7 +18,7 @@ export const ThemeChanger = () => {
 
     if (!mounted) {
         return null
-      }
+    }
 
     const toggle = () => {
         if (theme == 'light') {
@@ -33,12 +33,22 @@ export const ThemeChanger = () => {
 
     return (
         <div>
-            <Button
-                auto
-                color="error"
-                icon={<HeartIcon/>}
-                onPress={toggle}
-            />
+            {theme == 'light' ? (
+                <Button
+                    auto
+                    bordered
+                    icon={<MoonIcon />}
+                    onPress={toggle}
+                />
+            ) : (
+                <Button
+                    auto
+                    bordered
+                    icon={<SunIcon />}
+                    onPress={toggle}
+                />
+            )
+            }
         </div>
     )
 }
