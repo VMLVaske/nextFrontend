@@ -17,12 +17,7 @@ import {
   Divider
 } from "@nextui-org/react";
 
-import SellModal from "./modals/sellModal";
-import BuyModal from "./modals/buyModal";
-import TransferNFTModal from "./modals/transferNFTModal";
-import MintNFtModal from "./modals/mintNFTModal";
-import BurnNFTModal from "./modals/burnNFTModal";
-import UseNFTModal from "./modals/useNFTModal";
+import NftCardButtons from "./buttons/nftCardButtons";
 
 const ActiveMarketListings = () => {
   const router = useRouter();
@@ -74,33 +69,18 @@ const ActiveMarketListings = () => {
                           <Card.Image
                             src={index.asset.image}
                             alt={index.asset.name}
+                            width={128}
+                            height={128}
                           />
-                          <Text b>{index.asset.description}</Text>
+                          <Spacer />
+                          <Row fluid>
+                            <Text b>{index.asset.description}</Text>
+                          </Row>
+
                         </Card.Body>
+
                         <Card.Footer>
-                          <Grid.Container gap={1} justify="center">
-                            <Divider />
-                            <Grid>
-                              <BuyModal NftId={index.asset.id.toNumber()} />
-                            </Grid>
-                            <Grid>
-                              <SellModal NftId={index.asset.id.toNumber()} />
-                            </Grid>
-                            <Divider />
-                            <Grid>
-                              <TransferNFTModal NftId={index.asset.id.toNumber()} />
-                            </Grid>
-                            <Grid>
-                              <BurnNFTModal NftId={index.asset.id.toNumber()} />
-                            </Grid>
-                            <Divider />
-                            <Grid>
-                              <MintNFtModal NftId={index.asset.id.toNumber()} />
-                            </Grid>
-                            <Grid>
-                              <UseNFTModal NftId={index.asset.id.toNumber()} />
-                            </Grid>
-                          </Grid.Container>
+                          <NftCardButtons NftId={index.asset.id.toNumber()} />
                         </Card.Footer>
                       </Card>
                     </Grid>

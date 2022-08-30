@@ -1,6 +1,5 @@
 import { useTheme } from 'next-themes';
-import { Button, StyledButtonIcon } from '@nextui-org/react';
-import { HeartIcon } from '../../icons/HeartIcon';
+import { Button } from '@nextui-org/react';
 import { SunIcon } from '../../icons/SunIcon';
 import { MoonIcon } from '../../icons/MoonIcon';
 import { useState, useEffect } from 'react';
@@ -18,7 +17,7 @@ export const ThemeChanger = () => {
 
     if (!mounted) {
         return null
-      }
+    }
 
     const toggle = () => {
         if (theme == 'light') {
@@ -33,12 +32,22 @@ export const ThemeChanger = () => {
 
     return (
         <div>
-            <Button
-                auto
-                color="error"
-                icon={<HeartIcon/>}
-                onPress={toggle}
-            />
+            {theme == 'light' ? (
+                <Button
+                    auto
+                    bordered
+                    icon={<MoonIcon />}
+                    onPress={toggle}
+                />
+            ) : (
+                <Button
+                    auto
+                    bordered
+                    icon={<SunIcon />}
+                    onPress={toggle}
+                />
+            )
+            }
         </div>
     )
 }

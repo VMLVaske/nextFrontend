@@ -4,15 +4,15 @@ import {
   Grid,
   Spacer,
   Text,
-  Image,
   Container,
   Row,
   Col,
+  Link
 } from "@nextui-org/react";
-//import Logo from "../../icons/HeartIcon"
+import Logo from "../../public/agronomy.png";
+import Image from 'next/image'
 
 import { useState } from "react";
-import { NetworkIndicator } from "./NetworkIndicator";
 import { useRouter } from "next/router";
 import {
   useAddress,
@@ -39,10 +39,17 @@ export default function Navbar() {
   const [authMessage, setAuthMessage] = useState("N/A");
 
   return (
-    <Grid.Container gap={3} justify="center" alignItems="stretch">
+    <Grid.Container gap={2} justify="center" alignItems="center">
       <Spacer />
       <Grid>
-        <Image alt="logo" />
+        <Image
+          src={Logo}
+          alt="bread>beer>bread"
+          objectFit="cover"
+          width={64}
+          height={64}
+        />
+
       </Grid>
       <Grid>
         <Button onPress={() => router.push("/")}>Home</Button>
@@ -53,7 +60,9 @@ export default function Navbar() {
       <Grid>
         <Button onPress={() => router.push("/collection")}>Collection</Button>
       </Grid>
-
+      <Grid>
+        <Button onPress={() => router.push("/about")}>About</Button>
+      </Grid>
       <Grid>
         <ThemeChanger />
       </Grid>
@@ -75,9 +84,7 @@ export default function Navbar() {
           </Button>
         )}
       </Grid>
-      <Grid>
-        <NetworkIndicator />
-      </Grid>
+
     </Grid.Container>
   );
 }

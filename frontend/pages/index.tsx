@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
-import { Container, Row, Text, Spacer, Divider, Col, Button } from '@nextui-org/react';
+import { Container, Row, Text, Spacer, Divider, Col, Grid } from '@nextui-org/react';
 
 import type { NextPage } from 'next';
 
@@ -20,25 +20,37 @@ const Home: NextPage = () => {
 
         <main>
           <Container fluid md gap={3}>
+
             <Spacer />
+
             <Row justify="center">
 
               <Text h1>
                 Main Page
               </Text>
             </Row>
-            <Spacer />
-            <Spacer />
-            <Spacer />
-            <Row justify="center">
-              <RegisterBuyer />
-            </Row>
+
             <Spacer />
             <Divider />
             <Spacer />
-            <Row justify="center">
-              <RegisterProducer />
-            </Row>
+
+            <Grid.Container gap={2} justify="center">
+              <Grid xs={6}>
+                <Row justify="center">
+                  <RegisterBuyer />
+                </Row>
+              </Grid>
+
+              <Grid xs={6}>
+                <Row justify="center">
+                  <RegisterProducer />
+                </Row>
+              </Grid>
+            </Grid.Container>
+
+            <Spacer />
+            <Divider />
+
           </Container>
         </main>
       </div>

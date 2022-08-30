@@ -1,5 +1,5 @@
 export const SunIcon = ({
-    fill = 'currentColor',
+    fill = "currentColor",
     filled,
     size,
     height,

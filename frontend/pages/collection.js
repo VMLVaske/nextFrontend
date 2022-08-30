@@ -19,9 +19,7 @@ export default function Collection() {
                             <Text h1>NFT Collection</Text>
                         </Row>
                         <Spacer />
-                        <Row justify="center">
-                            <CreateNFTModal />
-                        </Row>
+                        <Divider />
                         <Spacer />
                         <Row justify="center">
                             <OwnedNFTs />
