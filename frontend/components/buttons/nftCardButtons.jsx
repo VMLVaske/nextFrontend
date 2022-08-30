@@ -4,6 +4,7 @@ import SellModal from "../modals/sellModal";
 import BuyModal from "../modals/buyModal";
 import TransferNFTModal from "../modals/transferNFTModal";
 import MintNFtModal from "../modals/mintNFTModal";
+import ClaimNFtModal from '../modals/claimNFTModal';
 import BurnNFTModal from "../modals/burnNFTModal";
 import UseNFTModal from "../modals/useNFTModal";
 
@@ -27,7 +28,7 @@ export default function NftCardButtons(props) {
 
             <Grid.Container gap={1} justify="space-evenly">
                 <Grid>
-                    <MintNFtModal NftId={props.NftId} />
+                    <ClaimNFtModal NftId={props.NftId} />
                 </Grid>
                 <Grid>
                     <UseNFTModal NftId={props.NftId} />
