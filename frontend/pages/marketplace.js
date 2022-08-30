@@ -17,6 +17,8 @@ export default function Marketplace() {
                             <Text h1>Marketplace </Text>
                         </Row>
                         <Spacer />
+                        <Divider />
+                        <Spacer />
                         <ActiveMarketListings />
                         <Spacer />
                         <Divider />

@@ -19,6 +19,8 @@ export default function Collection() {
                             <Text h1>About this project</Text>
                         </Row>
                         <Spacer />
+                        <Divider />
+                        <Spacer />
                         <Row>
                             <Col>
                                 <Image />
