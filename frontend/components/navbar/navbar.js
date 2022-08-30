@@ -59,7 +59,9 @@ export default function Navbar() {
       <Grid>
         <Button onPress={() => router.push("/collection")}>Collection</Button>
       </Grid>
-
+      <Grid>
+        <Button onPress={() => router.push("/about")}>About</Button>
+      </Grid>
       <Grid>
         <ThemeChanger />
       </Grid>
