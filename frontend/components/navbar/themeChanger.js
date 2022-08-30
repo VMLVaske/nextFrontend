@@ -1,6 +1,5 @@
 import { useTheme } from 'next-themes';
-import { Button, StyledButtonIcon } from '@nextui-org/react';
-import { HeartIcon } from '../../icons/HeartIcon';
+import { Button } from '@nextui-org/react';
 import { SunIcon } from '../../icons/SunIcon';
 import { MoonIcon } from '../../icons/MoonIcon';
 import { useState, useEffect } from 'react';
